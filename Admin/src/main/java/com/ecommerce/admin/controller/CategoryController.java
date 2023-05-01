@@ -13,7 +13,8 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-public class CategoryController {
+public class
+CategoryController {
 
     @Autowired
     private CategoryService categoryService;
