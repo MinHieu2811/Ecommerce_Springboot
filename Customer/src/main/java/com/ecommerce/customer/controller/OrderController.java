@@ -32,17 +32,19 @@ public class OrderController {
         }
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
-        if(customer.getPhoneNumber().trim().isEmpty() || customer.getAddress().trim().isEmpty()
-                || customer.getCity().trim().isEmpty() || customer.getCountry().trim().isEmpty()){
-
+        if (customer == null || customer.getPhoneNumber() == null || customer.getAddress() == null
+                || customer.getCity() == null || customer.getCountry() == null
+                || customer.getPhoneNumber().trim().isEmpty() || customer.getAddress().trim().isEmpty()
+                || customer.getCity().trim().isEmpty() || customer.getCountry().trim().isEmpty()) {
             model.addAttribute("customer", customer);
-            model.addAttribute("error", "You must fill the information after checkout!");
+            model.addAttribute("error", "You must fill the information before checkout!");
             return "account";
-        }else{
+        } else {
             model.addAttribute("customer", customer);
             ShoppingCart cart = customer.getShoppingCart();
             model.addAttribute("cart", cart);
         }
+
         return "checkout";
     }
 
@@ -55,9 +57,14 @@ public class OrderController {
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
         List<Order> orderList= customer.getOrders();
-        model.addAttribute("orders", orderList);
+        if (orderList.isEmpty()) {
+            model.addAttribute("check", "No orders found.");
+        } else {
+            model.addAttribute("orders", orderList);
+        }
         return "order";
     }
+
 
     @GetMapping("/save-order")
     public String saveOrder(Principal principal, Model model) {

@@ -47,6 +47,7 @@ public class HomeController {
         return "home";
     }
 
+
     @GetMapping("/home")
     public String index(Model model){
         List<Category> categories = categoryService.findAll();

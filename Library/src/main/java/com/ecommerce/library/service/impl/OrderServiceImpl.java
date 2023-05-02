@@ -35,14 +35,15 @@ public class OrderServiceImpl  implements OrderService {
         order.setOrderDate(new Date());
         order.setCustomer(cart.getCustomer());
         order.setTotalPrice(cart.getTotalPrices());
+        orderRepository.save(order); // save the Order entity here
+
         List<OrderDetail> orderDetailList = new ArrayList<>();
         for (CartItem item : cart.getCartItem()) {
             OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setOrder(order);
+            orderDetail.setOrder(order); // set the Order property to the saved Order instance
             orderDetail.setQuantity(item.getQuantity());
             orderDetail.setProduct(item.getProduct());
             orderDetail.setUnitPrice(item.getProduct().getCostPrice());
-            orderDetailRepository.save(orderDetail);
             orderDetailList.add(orderDetail);
             cartItemRepository.delete(item);
         }
@@ -52,8 +53,8 @@ public class OrderServiceImpl  implements OrderService {
         cart.setTotalItems(0);
         cart.setTotalPrices(0);
         cartRepository.save(cart);
-        orderRepository.save(order);
-     }
+    }
+
 
     @Override
     public void acceptOrder(Long id) {
