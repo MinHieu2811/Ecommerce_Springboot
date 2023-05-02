@@ -50,4 +50,11 @@ public class HomeController {
         model.addAttribute("products", productDtos);
         return "index";
     }
+
+    @GetMapping("/contact-us")
+    public String contactUs(Model model){
+        // Add any necessary model attributes for the "Contact Us" page
+        return "contact-us";
+    }
+
 }
