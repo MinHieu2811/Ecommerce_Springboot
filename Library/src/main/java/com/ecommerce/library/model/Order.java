@@ -30,4 +30,8 @@ public class Order {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private List<OrderDetail> orderDetailList;
+
+    public void setStatus(String status) {
+        this.orderStatus = status;
+    }
 }
