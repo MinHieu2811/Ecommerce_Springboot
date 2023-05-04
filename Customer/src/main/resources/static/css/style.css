@@ -2382,8 +2382,7 @@ width: 100%;
      padding: 70px 0px;
 }
  .contact-info-left{
-     padding: 20px;
-     background: url(../images/contact-bg.jpg) no-repeat center;
+     padding: 15px;
 	 background-size: cover;
 }
  .contact-info-left h2{
