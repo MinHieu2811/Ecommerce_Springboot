@@ -219,14 +219,20 @@
  .login-box .bootstrap-select .btn-light{
      padding: 4px;
      font-size: 14px;
-     background: #b0b435;
+     background: #ff7f00;
      color: #fff;
      border: none;
      border-radius: 0px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+
 }
  .login-box .bootstrap-select .btn-light span{
      padding: 2px;
      line-height: 15px;
+
+
 }
 .login-box .dropdown-toggle::after {
      display: inline-block;
@@ -587,7 +593,7 @@
      transform: perspective(1px) translateZ(0);
      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
      position: relative;
-     background: #b0b435;
+     background: #ff7f00;
      -webkit-transition-property: color;
      transition-property: color;
      -webkit-transition-duration: 0.3s;
@@ -799,6 +805,7 @@ section .noi-dung .form .icon-dang-nhap li i{
     font-size: 24px;
 }
 .mainDiv {
+    background: url("../images/beach.avif") no-repeat center center;
     display: flex;
     min-height: 100%;
     align-items: center;
@@ -809,7 +816,7 @@ section .noi-dung .form .icon-dang-nhap li i{
  .cardStyle {
     width: 500px;
     border-color: white;
-    background: #fff;
+    background: #a1fdb7;
     padding: 36px 0;
     border-radius: 4px;
     margin: 30px 0;
@@ -1524,7 +1531,7 @@ button[disabled] {
      padding: 10px 0px;
 }
  .all-title-box .breadcrumb{
-     background: #b0b435;
+     background: #ff7f00;
      margin: 0px;
      display: inline-block;
      border-radius: 0px;
@@ -1595,7 +1602,7 @@ button[disabled] {
      width: 100%;
      height: 0;
      border-radius: 0px;
-     background: #b0b435;
+     background: #ff7f00;
      position: absolute;
      top: 0;
      left: 0;
@@ -2385,8 +2392,11 @@ width: 100%;
      padding: 70px 0px;
 }
  .contact-info-left{
-     padding: 15px;
+     border: 2px solid green;
+     border-radius: 10px;
+      padding: 10px;
 	 background-size: cover;
+
 }
  .contact-info-left h2{
      font-size: 22px;
