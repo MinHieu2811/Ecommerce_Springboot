@@ -101,7 +101,7 @@
 }
 
  .main-top{
-     background: #000000;
+     background: url("../images/unnamed.jpg") no-repeat center center;
      padding: 10px 0px;
 
 }
@@ -1494,13 +1494,13 @@ button[disabled] {
 }
 /*------------------------------------------------------------------ All Pages -------------------------------------------------------------------*/
  .all-title-box{
-     background: url("../images/18303697.jpg") no-repeat center center;
-     -webkit-background-size: cover;
-     -moz-background-size: cover;
-     -ms-background-size: cover;
-     -o-background-size: cover;
-     background-size: cover;
-     text-align: center;
+         background: url("../images/18303697.jpg") no-repeat center center;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -ms-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+         text-align: center;
 /*     background-attachment: fixed;*/
      padding: 80px 0px;
      position: relative;
