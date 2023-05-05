@@ -226,13 +226,15 @@ li.close-full-menu{
 .attr-nav > ul > li > a span.badge{
     position: absolute;
     top: 50%;
-    margin-top: -15px;
+    margin-top: -20px;
     right: 5px;
     font-size: 10px;
     padding: 0;
     width: 15px;
     height: 15px;
     padding-top: 2px;
+    background: #3CE02B;
+    border-radius: 999px;
 }
 
 .attr-nav > ul > li.dropdown ul.dropdown-menu{
