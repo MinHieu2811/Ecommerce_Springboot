@@ -87,6 +87,7 @@ public class ProductController {
                               @RequestParam("imageProduct")MultipartFile imageProduct,
                               RedirectAttributes attributes){
         try {
+            productDto.setCategory(categoryService.findById(productDto.getCategory().getId()));
             productService.save(imageProduct, productDto);
             attributes.addFlashAttribute("success", "Add successfully!");
         }catch (Exception e){
@@ -115,8 +116,9 @@ public class ProductController {
                                 @ModelAttribute("productDto") ProductDto productDto,
                                 @RequestParam("imageProduct")MultipartFile imageProduct,
                                 RedirectAttributes attributes
-                                ){
+    ){
         try {
+            productDto.setCategory(categoryService.findById(productDto.getCategory().getId()));
             productService.update(imageProduct, productDto);
             attributes.addFlashAttribute("success", "Update successfully!");
         }catch (Exception e){
@@ -124,8 +126,8 @@ public class ProductController {
             attributes.addFlashAttribute("error", "Failed to update!");
         }
         return "redirect:/products/0";
-
     }
+
 
     @RequestMapping(value = "/enable-product/{id}", method = {RequestMethod.PUT , RequestMethod.GET})
     public String enabledProduct(@PathVariable("id")Long id, RedirectAttributes attributes){
