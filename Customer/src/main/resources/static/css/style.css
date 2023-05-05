@@ -696,7 +696,14 @@ section{
     height: 80vh;
 }
 #login-form{
-    /* display: none;   */
+/* display: none;   */
+         background: url("../images/signinpage.jpg") no-repeat center center;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -ms-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+         text-align: center;
 }
 #register-form{
     display:hidden;
@@ -712,9 +719,12 @@ section .noi-dung .form{
     width: 40%;
     margin-top: 0;
     margin: bottom 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
 }
 section .noi-dung .form h2{
-    color: #607d8b;
+  /*  background: url("../images/18303697.jpg") no-repeat center center;*/
+    color: white;
     font-weight: 500;
     font-size: 2em;
     text-transform: uppercase;
@@ -737,10 +747,10 @@ section .noi-dung .form .input-form input{
     width: 100%;
     padding: 10px 20px;
     outline: none;
-    border: 1px solid #607d8b;
+    border: 1px solid white;
     font-size: 16px;
     letter-spacing: 1px;
-    color: #607d8b;
+    color: white;
     background: transparent;
     border-radius: 30px;
     }
@@ -766,14 +776,14 @@ section .noi-dung .form .nho-dang-nhap{
     font-size: 14px;
 }
 section .noi-dung .form .input-form p{
-    color: #607d8b;
+    color: white;
 }
 section .noi-dung .form .input-form p a{
     color: #ff4584;
 }
 
 section .noi-dung .form h3{
-    color: #607d8b;
+    color: white;
     text-align: center;
     font-weight: 500;
 }
@@ -783,6 +793,22 @@ section .noi-dung .form .icon-dang-nhap{
     align-items: center;
     margin-bottom: 10px;
 }
+
+section .noi-dung .form .icon-dang-nhap .fbbutton{
+    background: #fff;
+    border-radius: 999px;
+}
+
+section .noi-dung .form .icon-dang-nhap .ggbutton{
+    background: #eca15d;
+    border-radius: 999px;
+}
+
+section .noi-dung .form .icon-dang-nhap .wbbutton{
+    background: #6CE857;
+    border-radius: 999px;
+}
+
 section .noi-dung .form .icon-dang-nhap li{
     list-style: none;
     cursor: pointer;
