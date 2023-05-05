@@ -50,6 +50,23 @@
                         <p th:text="${customer.address + ', ' + customer.city + ', ' + customer.country}" id="address">
                     </div>
                     <hr class="mb-4">
+
+                    <div class="payment-page-title" style="height: 35px; line-height: 35px;">
+                        <img style="height: 80%; float: left;" src="images/iconvoucher.png">
+                        <div class="page-title">Apply Voucher</div>
+                    </div>
+                    <div class="tab-35">
+                        <div class="col-lg-6 col-md-6 col-sm-16 col-xs-16">
+                            <label class="item-title voucher-code-title">Voucher Code </label>
+                            <input type="text" class="voucher-code-input" id="voucher-code" fdprocessedid="feyv6">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-16 col-xs-16">
+                            <label class="item-title voucher-pin-title">&nbsp;</label>
+                            <button style="width: 100%" type="button" onclick="registerVoucher();" class="btn btn-3 btn-mua-ve uppercase" fdprocessedid="y7zu7c">
+                                Redeem</button>
+                        </div>
+                    </div>
+
                     <hr class="mb-4">
                     <div class="title"><span>Payment Methods</span></div>
                     <div class="d-block my-3">
