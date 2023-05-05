@@ -461,9 +461,9 @@
      padding-left: 10px;
      padding-right: 30px;
 }
- nav.navbar.bootsnav ul.nav li.active > a{
+/* nav.navbar.bootsnav ul.nav li.active > a{
      color: #b0b435;
-}
+}*/
  nav.navbar.bootsnav ul.nav li.active > a:hover{
      color: #b0b435;
 }
@@ -675,7 +675,7 @@
 }
  .main-header.fixed-menu {
      padding: 0px;
-     box-shadow: 0 0 8px 0 rgba(0,0,0,.12);
+     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
      border-radius: 0;
 }
  .top-search .input-group-addon{
@@ -2080,6 +2080,12 @@ button[disabled] {
      padding-bottom:100px;
 }
 
+@media (min-width: 1200px) {
+    .cart-box-main .container {
+        max-width: 1400px;
+     }
+}
+
 .btn-mua-ve{
     background-image: linear-gradient(to right, #fc3606 0%, #fda085 51%, #fc7704 100%) !important;
     padding: 10px 40px;
@@ -2132,7 +2138,6 @@ button[disabled] {
      border: 1.5px solid #000000;
      text-align: center;
      justify-content: center;
-     width: 5%;
 }
  .quantity-box input:focus{
      border-color: #b0b435;
@@ -2145,18 +2150,7 @@ button[disabled] {
 .order-date{
     border-right: 1px solid #000000;
 }
-.price-pr{
-    border-right: 1px solid #000000;
-    border-left: 1px solid #000000;
-}
-.quantity-box{
-    border-right: 1px solid #000000;
-    border-left: 1px solid #000000;
-}
-.total-pr{
-    border-right: 1px solid #000000;
-    border-left: 1px solid #000000;
-}
+
 .button-cancel{
 background-color: #01a9ac;
 color: #FFFF;
@@ -2619,9 +2613,7 @@ width: 100%;
      border-radius: 0px;
      color: #ffffff;
 }
- .quantity-box input{
-     width: 100%;
-}
+
  .price-box-bar{
      margin-bottom: 30px;
 }
