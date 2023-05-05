@@ -28,7 +28,7 @@
                 <div th:if="${size == 0}">
                     <p>No category</p>
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new category</button>
+                <button type="button" class="btn btn-primary btn-add-product" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new category</button>
                 <div th:if = "${success}" class="text-center alert alert-success">
                     <p th:text="${success}"></p>
                 </div>
