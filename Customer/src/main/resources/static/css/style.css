@@ -1148,6 +1148,15 @@ button[disabled] {
      overflow: hidden;
      position: relative;
 }
+ .products-single .box-img-hover .cart{
+    background: #9a9d2e;
+        padding: 4px;
+        padding-right: 8px;
+        padding-left: 8px;
+        border-color: transparent;
+        margin: 6px;
+        color: white;
+ }
  .box-img-hover img{
      margin: 0 auto;
      text-align: center;
