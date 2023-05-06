@@ -26,29 +26,29 @@ public class VoucherController {
         model.addAttribute("title", "Manage Vouchers");
         model.addAttribute("vouchers", vouchers);
         model.addAttribute("size", vouchers.size());
+
+        // Add voucher object to the model if it doesn't exist
+        if (!model.containsAttribute("voucher")) {
+            model.addAttribute("voucher", new Voucher());
+        }
+
         return "vouchers";
     }
 
-    @GetMapping("/add-voucher")
-    public String addVoucherForm(Model model, Principal principal) {
-        if (principal == null) {
-            return "redirect:/login";
-        }
-        model.addAttribute("voucher", new Voucher());
-        return "add-voucher";
-    }
 
-    @PostMapping("/save-voucher")
-    public String saveVoucher(@ModelAttribute("voucher") Voucher voucher, RedirectAttributes attributes) {
+    @PostMapping("/add-voucher")
+    public String addVoucher(@ModelAttribute("voucher") Voucher voucher, RedirectAttributes attributes){
         try {
-            voucherService.addVoucher(voucher); // Updated
+            voucherService.addVoucher(voucher);
             attributes.addFlashAttribute("success", "Voucher added successfully!");
         } catch (Exception e) {
             e.printStackTrace();
-            attributes.addFlashAttribute("error", "Failed to add voucher!");
+            attributes.addFlashAttribute("failed", "Failed to add voucher!");
         }
         return "redirect:/vouchers";
     }
+
+
 
     @RequestMapping(value = "/delete-voucher/{id}", method = {RequestMethod.PUT, RequestMethod.GET})
     public String deleteVoucher(@PathVariable("id") Long id, RedirectAttributes attributes) {
