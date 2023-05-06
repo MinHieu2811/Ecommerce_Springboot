@@ -25,7 +25,7 @@
 <ul th:fragment="sidebar" style="background: #333" class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" th:href="@{/index}">
     <div class="sidebar-brand-icon">
       <i class="fas fa-robot"></i>
     </div>
@@ -37,7 +37,7 @@
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="index.html" th:href="@{/index}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
   </li>
@@ -63,6 +63,8 @@
         <a class="collapse-item" href="categories.html" th:href = "@{/categories}">Manage Category</a>
         <a class="collapse-item" href="cards.html" th:href = "@{/products/0}">Manage Product</a>
         <a class="collapse-item" href="vouchers.html" th:href = "@{/vouchers}">Manage Voucher</a>
+        <a class="collapse-item" href="orders.html" th:href = "@{/orders}">Manage Order</a>
+
 
       </div>
     </div>
@@ -79,10 +81,10 @@
          data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Custom Utilities:</h6>
-        <a class="collapse-item" href="utilities-color.html">Colors</a>
-        <a class="collapse-item" href="utilities-border.html">Borders</a>
-        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-        <a class="collapse-item" href="utilities-other.html">Other</a>
+        <a class="collapse-item" href="utilities-color.html " th:href = "@{/utilities-color}">Colors</a>
+        <a class="collapse-item" href="utilities-border.html" th:href = "@{/utilities-border}">Borders</a>
+        <a class="collapse-item" href="utilities-animation.html" th:href = "@{/utilities-animation}">Animations</a>
+        <a class="collapse-item" href="utilities-other.html" th:href = "@{/utilities-other}">Other</a>
       </div>
     </div>
   </li>
@@ -105,27 +107,25 @@
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Login Screens:</h6>
-        <a class="collapse-item" href="login.html">Login</a>
-        <a class="collapse-item" href="register.html">Register</a>
-        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+        <a class="collapse-item" href="login.html" th:href="@{/login}">Login</a>
+        <a class="collapse-item" href="register.html" th:href="@{/register}">Register</a>
         <div class="collapse-divider"></div>
         <h6 class="collapse-header">Other Pages:</h6>
-        <a class="collapse-item" href="404.html">404 Page</a>
-        <a class="collapse-item" href="blank.html">Blank Page</a>
+        <a class="collapse-item" href="404.html" th:href="@{/404}">404 Page</a>
       </div>
     </div>
   </li>
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <a class="nav-link" href="charts.html" th:href="@{/chart}">
       <i class="fas fa-fw fa-chart-area"></i>
       <span>Charts</span></a>
   </li>
 
   <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link" href="tables.html">
+    <a class="nav-link" href="tables.html" th:href="@{/tables}">
       <i class="fas fa-fw fa-table"></i>
       <span>Tables</span></a>
   </li>
@@ -352,11 +352,13 @@
 <!-- End of Topbar -->
 <!-- Footer -->
 <footer th:fragment="footer" class="sticky-footer " style="background-color: slategrey;color: floralwhite">
-  <div class="container my-auto">
-    <div class="copyright text-center my-auto">
-      <span>To Change Is To Improve</span>
+  <!-- Footer -->
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span>To Change Is To Better</span>
+      </div>
     </div>
-  </div>
+  <!-- End of Footer -->
 </footer>
 <!-- End of Footer -->
 <!-- Scroll to Top Button-->

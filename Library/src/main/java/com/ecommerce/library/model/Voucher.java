@@ -5,7 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -39,6 +40,5 @@ public class Voucher {
     @Column(name = "min_purchase_amount")
     private double minPurchaseAmount;
 
-    @Column(name = "is_active")
-    private boolean isActive;
+
 }

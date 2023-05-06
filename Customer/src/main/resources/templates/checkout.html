@@ -91,7 +91,7 @@
                                                            th:text="${item.product.name}"> </a>
                                     <div class="small text-muted">Price: $[[${item.product.costPrice}]] <span
                                             class="mx-2">|</span> Qty: [[${item.quantity}]] <span
-                                            class="mx-2">|</span> Subtotal: $[[${cart.totalPrices}]]
+                                            class="mx-2">|</span> Subtotal: $[[${item.product.costPrice*item.quantity}]]
                                     </div>
                                 </div>
                             </div>
