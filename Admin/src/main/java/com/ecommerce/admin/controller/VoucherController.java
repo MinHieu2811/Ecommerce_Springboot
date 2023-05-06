@@ -1,5 +1,6 @@
 package com.ecommerce.admin.controller;
 
+import com.ecommerce.library.model.Category;
 import com.ecommerce.library.model.Voucher;
 import com.ecommerce.library.service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class VoucherController {
         model.addAttribute("title", "Manage Vouchers");
         model.addAttribute("vouchers", vouchers);
         model.addAttribute("size", vouchers.size());
+        model.addAttribute("voucherNew", new Voucher());
+
 
         // Add voucher object to the model if it doesn't exist
         if (!model.containsAttribute("voucher")) {
