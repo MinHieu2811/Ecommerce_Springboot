@@ -83,7 +83,7 @@
 
 <!--Add Modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/add-voucher}" method="post" th:object="${categoryNew}">
+    <form th:action="@{/add-voucher}" method="post" th:object="${voucher}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -93,32 +93,33 @@
 
                     <div class="form-group">
                         <label for="recipient-code" class="col-form-label">Code:</label>
-                        <input type="text" class="form-control" th:field = "*{voucher.code}" id="recipient-code">
+                        <input type="text" class="form-control" th:field="*{code}" id="recipient-code">
                     </div>
                     <div class="form-group">
                         <label for="recipient-description" class="col-form-label">Description:</label>
-                        <input type="text" class="form-control" th:field = "*{voucher.description}" id="recipient-description">
+                        <input type="text" class="form-control" th:field="*{description}" id="recipient-description">
                     </div>
                     <div class="form-group">
                         <label for="recipient-start-date" class="col-form-label">Start Date:</label>
-                        <input type="date" class="form-control" th:field = "*{voucher.startDate}" id="recipient-start-date">
+                        <input type="date" class="form-control" th:field="*{startDate}" id="recipient-start-date">
                     </div>
                     <div class="form-group">
                         <label for="recipient-end-date" class="col-form-label">End Date:</label>
-                        <input type="date" class="form-control" th:field = "*{voucher.endDate}" id="recipient-end-date">
+                        <input type="date" class="form-control" th:field="*{endDate}" id="recipient-end-date">
                     </div>
                     <div class="form-group">
                         <label for="recipient-percentage" class="col-form-label">Discount Percentage:</label>
-                        <input type="text" class="form-control" th:field = "*{voucher.discountPercentage}" id="recipient-percentage">
+                        <input type="text" class="form-control" th:field="*{discountPercentage}" id="recipient-percentage">
                     </div>
                     <div class="form-group">
                         <label for="recipient-max-discount" class="col-form-label">Max Discount Amount:</label>
-                        <input type="text" class="form-control" th:field = "*{voucher.maxDiscountAmount}" id="recipient-max-discount">
+                        <input type="text" class="form-control" th:field="*{maxDiscountAmount}" id="recipient-max-discount">
                     </div>
                     <div class="form-group">
                         <label for="recipient-min-purchase" class="col-form-label">Max Purchase Amount:</label>
-                        <input type="text" class="form-control" th:field = "*{voucher.minPurchaseAmount}" id="recipient-min-purchase">
+                        <input type="text" class="form-control" th:field="*{minPurchaseAmount}" id="recipient-min-purchase">
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
