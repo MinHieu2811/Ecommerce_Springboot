@@ -25,8 +25,12 @@
             <div class="container-fluid">
                 <div>
                     <form th:action="@{/search-result/0}" method="get">
-                        <input type="text" id="search" name="keyword" placeholder="Search products">
-                        <button type="submit" class = "btn btn-primary">Search</button>
+                        <div class="input-group">
+                            <input type="text" id="search" name="keyword" class="form-control" placeholder="Search products">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary search-btn">Search</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <!-- Page Heading -->
@@ -39,8 +43,8 @@
                 <div th:if = "${error}" class="text-center alert alert-danger">
                     <p th:text = "${error}"></p>
                 </div>
-                <a class="btn btn-primary" th:href = "@{/add-product}">Add new product</a>
-                <table class="table table-striped" th:if = "${size > 0}">
+                <a class="btn btn-primary btn-add-product" th:href="@{/add-product}">Add New Product</a>
+                <table class="table table-striped custom-table" th:if="${size > 0}">
                     <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -58,7 +62,7 @@
                         <td th:text = "${product.category.name}"></td>
                         <td th:text = "${product.costPrice}"></td>
                         <td th:text = "${product.currentQuantity}"></td>
-                        <td><img src="" style="height: 40px; width: 40px;" th:src = "*{'data:image/jpeg;base64,' + {product.image}}"></td>
+                        <td><img src="" style="height: 40px; width: 40px;" th:src="@{'data:image/jpeg;base64,' + ${product.image}}"></td>
                         <td><a th:href="@{/update-product/{id} (id = ${product.id})}" class="btn btn-primary">Update</a></td>
                         <td>
                             <a th:if = "${product.activated == false}" th:href="@{/enable-product/{id} (id = ${product.id})}" class="btn btn-warning">Enable</a>
