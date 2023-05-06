@@ -145,7 +145,9 @@
      right: 10px;
 }
  .bootstrap-select.btn-group .dropdown-toggle .filter-option{
-     overflow: inherit;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
 }
  .bootstrap-select.btn-group .dropdown-menu{
      border: none;
@@ -216,10 +218,10 @@
      background: none;
      border: none;
 }
- .login-box .bootstrap-select .btn-light{
+    .login-box .bootstrap-select .btn-light{
      padding: 4px;
      font-size: 14px;
-     background: #ff7f00;
+     background-color: steelblue;
      color: #fff;
      border: none;
      border-radius: 0px;
@@ -1570,10 +1572,10 @@ button[disabled] {
      padding: 10px 0px;
 }
  .all-title-box .breadcrumb{
-     background: #ff7f00;
+     background-color: steelblue;
      margin: 0px;
      display: inline-block;
-     border-radius: 0px;
+     border-radius: 50px;
 	 float: right;
 }
  .all-title-box .breadcrumb li{
