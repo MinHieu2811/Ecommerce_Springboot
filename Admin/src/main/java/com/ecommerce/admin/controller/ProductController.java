@@ -138,7 +138,7 @@ public class ProductController {
             e.printStackTrace();
             attributes.addFlashAttribute("error", "Failed to enabled!");
         }
-        return "redirect:/products";
+        return "redirect:/products/0";
     }
 
     @RequestMapping(value = "/delete-product/{id}", method = {RequestMethod.PUT, RequestMethod.GET})
@@ -150,6 +150,6 @@ public class ProductController {
             e.printStackTrace();
             attributes.addFlashAttribute("error", "Failed to deleted");
         }
-        return "redirect:/products";
+        return "redirect:/products/0";
     }
 }
