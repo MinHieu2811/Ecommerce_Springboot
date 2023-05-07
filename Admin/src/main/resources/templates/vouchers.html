@@ -39,6 +39,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Voucher Code</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">End Date</th>
                         <th scope="col">Discount Percentage</th>
@@ -125,7 +126,7 @@
                         <input type="text" class="form-control" th:field="*{maxDiscountAmount}" id="recipient-max-discount">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-min-purchase" class="col-form-label">Max Purchase Amount:</label>
+                        <label for="recipient-min-purchase" class="col-form-label">Min Purchase Amount:</label>
                         <input type="text" class="form-control" th:field="*{minPurchaseAmount}" id="recipient-min-purchase">
                     </div>
 
