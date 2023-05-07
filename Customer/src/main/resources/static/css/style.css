@@ -2749,6 +2749,16 @@ padding-right:2px;
       color: #fff;
       vertical-align: middle;
     }
+
+    .why-text.full-width .cart{
+    background: steelblue;
+        padding: 4px;
+        padding-right: 8px;
+        padding-left: 8px;
+        border-color: transparent;
+        margin: 6px;
+        color: white;
+    }
 */
 
 

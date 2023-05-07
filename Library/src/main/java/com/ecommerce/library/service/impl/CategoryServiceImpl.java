@@ -2,6 +2,7 @@ package com.ecommerce.library.service.impl;
 
 import com.ecommerce.library.dto.CategoryDto;
 import com.ecommerce.library.model.Category;
+import com.ecommerce.library.model.Product;
 import com.ecommerce.library.repository.CategoryRepository;
 import com.ecommerce.library.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

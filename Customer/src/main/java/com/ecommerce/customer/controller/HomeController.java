@@ -3,6 +3,7 @@ package com.ecommerce.customer.controller;
 import com.ecommerce.library.dto.ProductDto;
 import com.ecommerce.library.model.Category;
 import com.ecommerce.library.model.Customer;
+import com.ecommerce.library.model.Product;
 import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.service.CategoryService;
 import com.ecommerce.library.service.CustomerService;
@@ -51,7 +52,7 @@ public class HomeController {
     @GetMapping("/home")
     public String index(Model model){
         List<Category> categories = categoryService.findAll();
-        List<ProductDto> productDtos = productService.findAll();
+        List<Product> productDtos = productService.getAllProducts();
         model.addAttribute("categories", categories);
         model.addAttribute("products", productDtos);
         return "index";

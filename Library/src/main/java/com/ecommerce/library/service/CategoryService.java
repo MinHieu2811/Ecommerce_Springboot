@@ -18,6 +18,4 @@ public interface CategoryService {
 
     /*Customer*/
     List<CategoryDto> getCategoryAndProduct();
-
-
 }
