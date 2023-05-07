@@ -2759,6 +2759,12 @@ padding-right:2px;
         margin: 6px;
         color: white;
     }
+
+    .error-message{
+    color: red;
+    font-weight: bold;
+    font-weight: italic;
+    }
 */
 
 

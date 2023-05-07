@@ -61,6 +61,12 @@
                             <div class="col-lg-6 col-md-6 col-sm-16 col-xs-16">
                                 <label class="item-title voucher-code-title">Voucher Code</label>
                                 <input type="text" class="voucher-code-input" id="voucher-code" name="voucherCode" fdprocessedid="feyv6">
+
+                                <div th:if="${error}">
+                                    <div class="error-message">
+                                            <span th:text="${error}"></span>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Hidden Total Price input field -->
@@ -77,11 +83,11 @@
                         </form>
 
                         <!-- Error message -->
-                        <div th:if="${error}">
-                            <div class="error-message">
-                                <span th:text="${error}"></span>
-                            </div>
-                        </div>
+<!--                        <div th:if="${error}">-->
+<!--                            <div class="error-message" style="">-->
+<!--                                <span th:text="${error}"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                     </div>
 

@@ -29,6 +29,8 @@ public class VoucherServiceImpl implements VoucherService {
             throw new VoucherException("Invalid voucher");
         }
 
+
+
         // Check if the total price meets the minimum purchase amount
         if (totalPrice < voucher.getMinPurchaseAmount()) {
             throw new VoucherException("Total price is below the minimum purchase amount");
@@ -42,6 +44,11 @@ public class VoucherServiceImpl implements VoucherService {
         if (discountAmount > voucher.getMaxDiscountAmount()) {
             discountAmount = voucher.getMaxDiscountAmount();
         }
+
+        if(isVoucherValid(voucher)){
+            throw new VoucherException("Redeem Voucher Successfully");
+        }
+
 
         return discountAmount;
     }
