@@ -86,14 +86,58 @@
                     </div>
 
                     <hr class="mb-4">
-                    <div class="title"><span>Payment Methods</span></div>
-                    <div class="d-block my-3">
-                        <div class="custom-control custom-radio">
-                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"
-                                   required>
-                            <label class="custom-control-label" for="debit">Cash</label>
+                    <div class="title">
                         </div>
+<!--                    <div class="d-block my-3">-->
+<!--                        <div class="custom-control custom-radio">-->
+<!--                            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input"-->
+<!--                                   required>-->
+<!--                            <label class="custom-control-label" for="debit">Cash</label>-->
+<!--                        </div>-->
+
+
+
+
+                    <h2>Payment Method</h2>
+
+                    <div class="payment-box recommended" id="cash-box">
+                        <h3>Cash<span class="recommendation-note">Recommended</span></h3>
+                        <p>Pay with cash upon delivery</p>
                     </div>
+
+                    <div class="payment-box" id="momo-box">
+                        <h3>Momo Pay</h3>
+                        <p>Pay with Momo Pay</p>
+                    </div>
+
+                    <div class="payment-box" id="shopee-box">
+                        <h3>Shopee Pay</h3>
+                        <p>Pay with Shopee Pay</p>
+                    </div>
+
+                    <div class="payment-box" id="vnpay-box">
+                        <h3>VNPay</h3>
+                        <p>Pay with VNPay</p>
+                    </div>
+
+                    <script>
+    // Add event listeners to payment boxes
+    var paymentBoxes = document.querySelectorAll('.payment-box');
+    for (var i = 0; i < paymentBoxes.length; i++) {
+      paymentBoxes[i].addEventListener('click', function() {
+        // Remove selected class from all payment boxes
+        for (var j = 0; j < paymentBoxes.length; j++) {
+          paymentBoxes[j].classList.remove('selected');
+        }
+        // Add selected class to clicked payment box
+        this.classList.add('selected');
+      });
+    }
+  </script>
+
+
+
+
                     <hr class="mb-1">
                 </div>
             </div>
