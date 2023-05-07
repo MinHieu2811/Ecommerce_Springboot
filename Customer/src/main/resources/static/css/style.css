@@ -102,7 +102,7 @@
 
  .main-top{
      background: url("../images/unnamed.jpg") no-repeat center center;
-     padding: 8px 0px;
+     padding: 0px 0px;
 
 }
  .custom-select-box{
@@ -2055,7 +2055,7 @@ button[disabled] {
      color: #666;
 }
  .why-text.full-width h5{
-     color: #000000;
+     color: #fff;
      font-weight: 700;
 }
  .why-text.full-width p{
