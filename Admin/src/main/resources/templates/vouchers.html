@@ -48,7 +48,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="voucher : ${vouchers}">
-                        <th scope="row" th:text="${voucher.id}"></th>
+                        <th scope="row" th:text="${voucher.code}"></th>
                         <td th:text="${voucher.startDate}"></td>
                         <td th:text="${voucher.endDate}"></td>
                         <td th:text="${voucher.discountPercentage}">
@@ -125,7 +125,7 @@
                         <input type="text" class="form-control" th:field="*{maxDiscountAmount}" id="recipient-max-discount">
                     </div>
                     <div class="form-group">
-                        <label for="recipient-min-purchase" class="col-form-label">Max Purchase Amount:</label>
+                        <label for="recipient-min-purchase" class="col-form-label">Min Purchase Amount:</label>
                         <input type="text" class="form-control" th:field="*{minPurchaseAmount}" id="recipient-min-purchase">
                     </div>
 

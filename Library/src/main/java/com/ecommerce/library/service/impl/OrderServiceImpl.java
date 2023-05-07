@@ -52,8 +52,10 @@ public class OrderServiceImpl  implements OrderService {
         cart.setCartItem(new HashSet<>());
         cart.setTotalItems(0);
         cart.setTotalPrices(0);
+        cart.setDiscountPrice(0);
         cartRepository.save(cart);
     }
+
 
 
     @Override

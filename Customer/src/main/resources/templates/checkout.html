@@ -56,15 +56,33 @@
                         <div class="page-title">Apply Voucher</div>
                     </div>
                     <div class="tab-35">
-                        <div class="col-lg-6 col-md-6 col-sm-16 col-xs-16">
-                            <label class="item-title voucher-code-title">Voucher Code </label>
-                            <input type="text" class="voucher-code-input" id="voucher-code" fdprocessedid="feyv6">
+                        <form th:action="@{/apply-voucher}" method="post">
+                            <!-- Voucher Code input field -->
+                            <div class="col-lg-6 col-md-6 col-sm-16 col-xs-16">
+                                <label class="item-title voucher-code-title">Voucher Code</label>
+                                <input type="text" class="voucher-code-input" id="voucher-code" name="voucherCode" fdprocessedid="feyv6">
+                            </div>
+
+                            <!-- Hidden Total Price input field -->
+                            <input type="hidden" name="totalPrice" id="total_prices" th:value="${cart.totalPrices}">
+
+                            <input type="hidden" name="customerId" id="customer-idd" th:value="${customer.id}">
+
+                            <div class="col-lg-4 col-md-4 col-sm-16 col-xs-16">
+                                <label class="item-title voucher-pin-title">&nbsp;</label>
+                                <button style="width: 100%" type="submit" onclick="registerVoucher();" class="btn btn-3 btn-mua-ve uppercase" fdprocessedid="y7zu7c">
+                                    Redeem
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Error message -->
+                        <div th:if="${error}">
+                            <div class="error-message">
+                                <span th:text="${error}"></span>
+                            </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-16 col-xs-16">
-                            <label class="item-title voucher-pin-title">&nbsp;</label>
-                            <button style="width: 100%" type="button" onclick="registerVoucher();" class="btn btn-3 btn-mua-ve uppercase" fdprocessedid="y7zu7c">
-                                Redeem</button>
-                        </div>
+
                     </div>
 
                     <hr class="mb-4">
@@ -110,12 +128,16 @@
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold" th:text="${ '$' + cart.totalPrices}"></div>
+                            <div class="ml-auto font-weight-bold" th:text="${ '$' + (cart.getTotalPrices()+cart.getDiscountPrice())}"></div>
                         </div>
+
+
                         <div class="d-flex">
                             <h4>Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $0</div>
+                            <div class="ml-auto font-weight-bold" id="discountValue" th:text="${ '$' + cart.getDiscountPrice()}"></div>
                         </div>
+
+
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>Tax</h4>
@@ -128,7 +150,7 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5" th:text=" '$' + ${cart.totalPrices + 2}"></div>
+                            <div class="ml-auto h5" th:text=" '$' + ${cart.getTotalPrices() + 2}"></div>
                         </div>
                         <hr>
                     </div>
@@ -155,6 +177,8 @@
 
 <!-- ALL JS FILES -->
 <div th:replace="fragments::script"></div>
+
+
 </body>
 
 </html>

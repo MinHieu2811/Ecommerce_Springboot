@@ -2,6 +2,7 @@ package com.ecommerce.customer.controller;
 
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.Order;
+import com.ecommerce.library.model.OrderDetail;
 import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.service.CustomerService;
 import com.ecommerce.library.service.OrderService;

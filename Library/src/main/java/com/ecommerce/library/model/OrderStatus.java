@@ -1,11 +1,11 @@
 package com.ecommerce.library.model;
 
 public enum OrderStatus {
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected"),
-    PENDING("Pending"),
-    SHIPPED("Shipped"),
-    DELIVERED("Delivered");
+    ACCEPTED("SHIPPING"),
+    REJECTED("REJECTED"),
+    PENDING("PENDING"),
+    SHIPPED("SHIPPED"),
+    DELIVERED("DELIVERED");
 
     private String status;
 
