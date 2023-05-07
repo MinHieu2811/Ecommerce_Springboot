@@ -39,7 +39,6 @@ public class CartController {
             session.setAttribute("totalItems", 0);
             model.addAttribute("subTotal", 0);
         } else {
-            System.out.println(shoppingCart.getTotalItems());
             session.setAttribute("totalItems", shoppingCart.getTotalItems());
             model.addAttribute("subTotal", shoppingCart.getTotalPrices());
             model.addAttribute("shoppingCart", shoppingCart);

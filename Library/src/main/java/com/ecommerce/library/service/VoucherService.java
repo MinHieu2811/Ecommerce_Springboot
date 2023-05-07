@@ -9,5 +9,5 @@ public interface VoucherService {
     void deleteVoucher(Long voucherId);
     List<Voucher> findAll();
 
-
+    double applyVoucher(Voucher voucher, double totalPrice);
 }

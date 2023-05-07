@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="voucher : ${vouchers}">
-                        <th scope="row" th:text="${voucher.id}"></th>
+                        <th scope="row" th:text="${voucher.code}"></th>
                         <td th:text="${voucher.startDate}"></td>
                         <td th:text="${voucher.endDate}"></td>
                         <td th:text="${voucher.discountPercentage}">
