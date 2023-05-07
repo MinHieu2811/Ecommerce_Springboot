@@ -45,10 +45,6 @@ public class VoucherServiceImpl implements VoucherService {
             discountAmount = voucher.getMaxDiscountAmount();
         }
 
-        if(isVoucherValid(voucher)){
-            throw new VoucherException("Redeem Voucher Successfully");
-        }
-
 
         return discountAmount;
     }
