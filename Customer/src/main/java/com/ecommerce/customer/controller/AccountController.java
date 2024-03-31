@@ -1,8 +1,6 @@
 package com.ecommerce.customer.controller;
 
-import com.ecommerce.library.model.City;
 import com.ecommerce.library.model.Customer;
-import com.ecommerce.library.service.CityService;
 import com.ecommerce.library.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 public class AccountController {

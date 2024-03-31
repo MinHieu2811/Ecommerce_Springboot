@@ -1,17 +1,13 @@
 package com.ecommerce.customer.controller;
 
-import com.ecommerce.library.model.OrderDetail;
 import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.model.Voucher;
-import com.ecommerce.library.repository.OrderDetailRepository;
 import com.ecommerce.library.repository.ShoppingCartRepository;
 import com.ecommerce.library.repository.VoucherRepository;
-import com.ecommerce.library.service.AdminService;
 import com.ecommerce.library.service.VoucherService;
 import com.ecommerce.library.service.impl.VoucherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
