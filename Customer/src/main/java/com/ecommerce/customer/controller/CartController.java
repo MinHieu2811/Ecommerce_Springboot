@@ -27,14 +27,15 @@ public class CartController {
     private ProductService productService;
 
     @GetMapping("/cart")
-    public String cart(Model model, Principal principal, HttpSession session){
-        if(principal == null){
-            return "redirect:/login";
+    public String cart(Model model, Principal principal, HttpSession session) {
+        if (principal == null) {
+            model.addAttribute("sign-in", false);
+            return "redirect:/";
         }
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
         ShoppingCart shoppingCart = customer.getShoppingCart();
-        if(shoppingCart == null || shoppingCart.getTotalItems() == 0){
+        if (shoppingCart == null || shoppingCart.getTotalItems() == 0) {
             model.addAttribute("check", "No item in your cart");
             session.setAttribute("totalItems", 0);
             model.addAttribute("subTotal", 0);
@@ -46,39 +47,34 @@ public class CartController {
         return "cart";
     }
 
-
-
-
     @PostMapping("/add-to-cart")
     public String addItemToCart(
             @RequestParam("id") Long productId,
             @RequestParam(value = "quantity", required = false, defaultValue = "1") int quantity,
             Principal principal,
-            HttpServletRequest request){
+            HttpServletRequest request) {
 
-        if(principal == null){
-            return "redirect:/login";
+        if (principal == null) {
+            return "redirect:/";
         }
         Product product = productService.getProductById(productId);
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
 
-        ShoppingCart cart = cartService.addItemToCart(product, quantity, customer);
+        cartService.addItemToCart(product, quantity, customer);
         return "redirect:" + request.getHeader("Referer");
 
     }
 
-
     @RequestMapping(value = "/update-cart", method = RequestMethod.POST, params = "action=update")
     public String updateCart(@RequestParam("quantity") int quantity,
-                             @RequestParam("id") Long productId,
-                             Model model,
-                             Principal principal
-                             ){
+            @RequestParam("id") Long productId,
+            Model model,
+            Principal principal) {
 
-        if(principal == null){
-            return "redirect:/login";
-        }else{
+        if (principal == null) {
+            return "redirect:/";
+        } else {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
             Product product = productService.getProductById(productId);
@@ -90,14 +86,13 @@ public class CartController {
 
     }
 
-
     @RequestMapping(value = "/update-cart", method = RequestMethod.POST, params = "action=delete")
     public String deleteItemFromCart(@RequestParam("id") Long productId,
-                                     Model model,
-                                     Principal principal){
-        if(principal == null){
-            return "redirect:/login";
-        }else{
+            Model model,
+            Principal principal) {
+        if (principal == null) {
+            return "redirect:/";
+        } else {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
             Product product = productService.getProductById(productId);
@@ -107,7 +102,5 @@ public class CartController {
         }
 
     }
-
-
 
 }
