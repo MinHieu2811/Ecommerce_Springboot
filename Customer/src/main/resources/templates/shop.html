@@ -65,19 +65,26 @@
 
                 <div class="products mb-3">
                   <div class="row justify-content-center">
-                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="productView : ${viewProducts}">
+                    <div
+                      class="col-6 col-md-4 col-lg-4 col-xl-3"
+                      th:each="productView : ${viewProducts}"
+                    >
                       <div class="product product-7 text-center">
                         <figure class="product-media">
                           <span class="product-label label-new">New</span>
-                          <a th:href="@{'/product/' + ${productView.id}}">
-                            <img th:src="'data:image/jpeg;base64,' + ${productView.image}" class="product-image" alt="Product image" />
+                          <a th:href="@{'/products/' + ${productView.id}}">
+                            <img
+                              th:src="'data:image/jpeg;base64,' + ${productView.image}"
+                              class="product-image"
+                              alt="Product image"
+                            />
                           </a>
 
                           <!-- End .product-action-vertical -->
 
                           <div class="product-action">
                             <a href="#" class="btn-product btn-cart"
-                            ><span>add to cart</span></a
+                              ><span>add to cart</span></a
                             >
                           </div>
                           <!-- End .product-action -->
@@ -86,16 +93,20 @@
 
                         <div class="product-body">
                           <div class="product-cat">
-                            <a href="#" th:text="${productView.category.name}"></a>
+                            <p th:text="${productView.category.name}"></p>
                           </div>
                           <!-- End .product-cat -->
                           <h3 class="product-title">
-                            <a href="product.html" th:text="${productView.name}"
-                            ></a
-                            >
+                            <a
+                              href="products/1"
+                              th:text="${productView.name}"
+                            ></a>
                           </h3>
                           <!-- End .product-title -->
-                          <div class="product-price" th:text="'$' + ${productView.costPrice}"></div>
+                          <div
+                            class="product-price"
+                            th:text="'$' + ${productView.costPrice}"
+                          ></div>
                           <!-- End .product-price -->
                           <div class="ratings-container">
                             <div class="ratings">
@@ -233,15 +244,27 @@
                     <div class="collapse show" id="widget-1">
                       <div class="widget-body">
                         <div class="filter-items filter-items-count">
-                          <div class="filter-item" th:each="category : ${categories}">
+                          <div
+                            class="filter-item"
+                            th:each="category : ${categories}"
+                          >
                             <div class="custom-control custom-checkbox">
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="cat-[[${category.id}]]" />
-                                <label class="custom-control-label" th:for="'cat-' + ${category.categoryId}" th:text="${category.categoryName}"></label>
-                              </div>
+                              <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="cat-[[${category.id}]]"
+                              />
+                              <label
+                                class="custom-control-label"
+                                th:for="'cat-' + ${category.categoryId}"
+                                th:text="${category.categoryName}"
+                              ></label>
                             </div>
                             <!-- End .custom-checkbox -->
-                            <span class="item-count" th:text="${category.numberOfProduct}"></span>
+                            <span
+                              class="item-count"
+                              th:text="${category.numberOfProduct}"
+                            ></span>
                           </div>
                           <!-- End .filter-item -->
 
@@ -260,7 +283,6 @@
                             <span class="item-count">0</span>
                           </div>
                           <!-- End .filter-item -->
-
                         </div>
                         <!-- End .filter-items -->
                       </div>
@@ -860,7 +882,11 @@
                     role="tabpanel"
                     aria-labelledby="register-tab"
                   >
-                    <form th:action="@{/do-register}" method="post" th:object="${customerDto}">
+                    <form
+                      th:action="@{/do-register}"
+                      method="post"
+                      th:object="${customerDto}"
+                    >
                       <div class="form-group">
                         <label for="firstName">First name</label>
                         <input

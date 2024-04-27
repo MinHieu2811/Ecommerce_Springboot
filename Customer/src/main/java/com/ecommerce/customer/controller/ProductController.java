@@ -29,16 +29,17 @@ public class ProductController {
         model.addAttribute("categories", categoryDtoList);
         model.addAttribute("viewProducts", listViewProducts);
         model.addAttribute("products", products);
+        model.addAttribute("customerDto", null);
         return "shop";
     }
 
     @GetMapping("/products/{id}")
     public String findProductById(@PathVariable("id") Long id, Model model){
-        // Product product = productService.getProductById(id);
-        // Long categoryId = product.getCategory().getId();
-        // List<Product>  products = productService.getRelatedProducts(categoryId);
-        // model.addAttribute("product", product);
-        // model.addAttribute("products", products);
+        Product product = productService.getProductById(id);
+        Long categoryId = product.getCategory().getId();
+        List<Product>  products = productService.getRelatedProducts(categoryId);
+        model.addAttribute("product", product);
+        model.addAttribute("products", products);
         return "product-detail";
     }
 
