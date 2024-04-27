@@ -36,8 +36,11 @@
         <!-- End .breadcrumb-nav -->
 
         <div class="page-content">
+          <div th:if="${check}" class="text-center alert-warning">
+            <p th:text="${check}"></p>
+          </div>
           <div class="cart">
-            <div class="container">
+            <div class="container" th:if="${check == null}">
               <div class="row">
                 <div class="col-lg-9">
                   <table class="table table-cart table-mobile">
@@ -67,9 +70,7 @@
                             <h3 class="product-title">
                               <p th:text="${cartItem.product.name}"></p>
                             </h3>
-                            <!-- End .product-title -->
                           </div>
-                          <!-- End .product -->
                         </td>
                         <td class="price-col">
                           <p th:text="'$' + ${cartItem.product.costPrice}"></p>
@@ -94,15 +95,14 @@
                               />
                             </form>
                           </div>
-                          <!-- End .cart-product-quantity -->
                         </td>
                         <td class="total-col">
                           <p th:text="'$' + ${cartItem.totalPrice}"></p>
                         </td>
                         <td class="remove-col">
-                          <!-- <button class="btn-remove">
+                          <button class="btn-remove">
                             <i class="icon-close"></i>
-                          </button> -->
+                          </button>
                           <button
                           type="submit"
                           name="action"
@@ -124,7 +124,7 @@
                         </button>
                         </td>
                       </tr>
-                      <tr>
+                      <!-- <tr>
                         <td class="product-col">
                           <div class="product">
                             <figure class="product-media">
@@ -139,9 +139,7 @@
                             <h3 class="product-title">
                               <a href="#">Blue utility pinafore denim dress</a>
                             </h3>
-                            <!-- End .product-title -->
                           </div>
-                          <!-- End .product -->
                         </td>
                         <td class="price-col">$76.00</td>
                         <td class="quantity-col">
@@ -157,7 +155,6 @@
                               required
                             />
                           </div>
-                          <!-- End .cart-product-quantity -->
                         </td>
                         <td class="total-col">$76.00</td>
                         <td class="remove-col">
@@ -165,7 +162,7 @@
                             <i class="icon-close"></i>
                           </button>
                         </td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                   <!-- End .table table-wishlist -->

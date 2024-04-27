@@ -32,13 +32,13 @@ public class ProductController {
         return "shop";
     }
 
-    @GetMapping("/find-product/{id}")
+    @GetMapping("/products/{id}")
     public String findProductById(@PathVariable("id") Long id, Model model){
-        Product product = productService.getProductById(id);
-        Long categoryId = product.getCategory().getId();
-        List<Product>  products = productService.getRelatedProducts(categoryId);
-        model.addAttribute("product", product);
-        model.addAttribute("products", products);
+        // Product product = productService.getProductById(id);
+        // Long categoryId = product.getCategory().getId();
+        // List<Product>  products = productService.getRelatedProducts(categoryId);
+        // model.addAttribute("product", product);
+        // model.addAttribute("products", products);
         return "product-detail";
     }
 

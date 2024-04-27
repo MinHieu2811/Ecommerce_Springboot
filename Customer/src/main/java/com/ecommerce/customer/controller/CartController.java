@@ -30,7 +30,7 @@ public class CartController {
     public String cart(Model model, Principal principal, HttpSession session) {
         if (principal == null) {
             model.addAttribute("sign-in", false);
-            return "redirect:/";
+            return "redirect:/login";
         }
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
@@ -55,7 +55,7 @@ public class CartController {
             HttpServletRequest request) {
 
         if (principal == null) {
-            return "redirect:/";
+            return "redirect:/login";
         }
         Product product = productService.getProductById(productId);
         String username = principal.getName();
@@ -73,7 +73,7 @@ public class CartController {
             Principal principal) {
 
         if (principal == null) {
-            return "redirect:/";
+            return "redirect:/login";
         } else {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
@@ -91,7 +91,7 @@ public class CartController {
             Model model,
             Principal principal) {
         if (principal == null) {
-            return "redirect:/";
+            return "redirect:/login";
         } else {
             String username = principal.getName();
             Customer customer = customerService.findByUsername(username);
