@@ -76,5 +76,4 @@ public class ProductController {
         model.addAttribute("categories", categories);
         return "filter-low-price";
     }
-
 }
