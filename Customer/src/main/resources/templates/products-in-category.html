@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- molla/category-4cols.html  22 Nov 2019 10:02:52 GMT -->
 <head th:replace="fragments::head"> </head>
-
 <body>
 <div class="page-wrapper">
   <header class="header header-intro-clearance header-3">
@@ -14,7 +12,7 @@
     <div
       class="page-header text-center"
       th:style="'background-image: url(' + @{/assets/images/page-header-bg.jpg} + ')'">
-      <!-- Nội dung khác ở đây -->
+
       <div class="container">
         <h1 class="page-title" th:text="${category.name}"></h1>
       </div>
@@ -65,7 +63,7 @@
 
             <div class="products mb-3">
               <div class="row justify-content-center">
-                <div class="col-6 col-md-4 col-lg-4 col-xl-3 product-item" th:each="product : ${products}">
+                <div class="col-6 col-md-4 col-lg-4 col-xl-3 product-item" th:each="product : ${productsPage}">
                   <div class="product product-7 text-center">
                     <figure class="product-media">
                       <span class="product-label label-new">New</span>
@@ -90,7 +88,8 @@
                       </div>
                       <!-- End .product-cat -->
                       <h3 class="product-title">
-                        <a href="product.html" th:text="${product.name}"
+                        <a th:href="@{'/product/' + ${product.id}}"
+                           th:text="${product.name}"
                         ></a
                         >
                       </h3>
@@ -116,12 +115,12 @@
             </div>
             <!-- End .products -->
 
-            <nav aria-label="Page navigation">
+            <nav aria-label="Page navigation" th:if="${currentPage < totalPages}">
               <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
+                <li th:if = "${currentPage != 0}" class="page-item">
                   <a
                           class="page-link page-link-prev"
-                          href="#"
+                          th:href="@{'/products-in-category/' + ${category.id} + '/' + ${currentPage - 1}}"
                           aria-label="Previous"
                           tabindex="-1"
                           aria-disabled="true"
@@ -131,20 +130,21 @@
                         >Prev
                   </a>
                 </li>
-                <li class="page-item active" aria-current="page">
-                  <a class="page-link" href="#">1</a>
+                <li th:each = "i : ${#numbers.sequence(1, totalPages)}"
+                    th:classappend="${currentPage == i - 1 ? 'active' : ''}"
+                    class="page-item" aria-current="page">
+                  <a class="page-link"
+                     th:href="@{'/products-in-category/'+ ${category.id} + '/' +  ${i - 1}}"
+                     th:text = "${i}"
+                     th:style="${i == (currentPage + 1) ? '' : 'color: grey'}"
+                  ></a>
                 </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item-total">of 6</li>
-                <li class="page-item">
+                <li class="page-item-total" th:text="'of ' + ${totalPages}"></li>
+                <li th:if = "${currentPage + 1 != totalPages}"
+                    class="page-item">
                   <a
                           class="page-link page-link-next"
-                          href="#"
+                          th:href="@{'/products-in-category/' + ${category.id} + '/' + ${currentPage + 1}}"
                           aria-label="Next"
                   >
                     Next
@@ -155,13 +155,15 @@
                 </li>
               </ul>
             </nav>
+
+
           </div>
           <!-- End .col-lg-9 -->
           <aside class="col-lg-3 order-lg-first">
             <div class="sidebar sidebar-shop">
               <div class="widget widget-clean">
                 <label>Filters:</label>
-                <a href="#" class="sidebar-filter-clear">Clean All</a>
+                <a th:href="@{/products/0}" class="sidebar-filter-clear">Clean All</a>
               </div>
               <!-- End .widget widget-clean -->
 
@@ -178,7 +180,7 @@
                     <div class="filter-items filter-items-count">
                       <div class="filter-item" th:each="category1 : ${categories}">
                         <div>
-                        <a th:href="@{/products-in-category/{id}(id=${category1.categoryId})}">
+                        <a  th:href="@{'/products-in-category/' + ${category1.categoryId} + '/0'}">
                           <span th:text="${category1.categoryName}"
                                 th:style="${category1.categoryName == category.name ? '' : 'color: black'}"></span>
                         </a>

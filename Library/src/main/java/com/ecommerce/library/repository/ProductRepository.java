@@ -51,8 +51,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> filterLowPrice();
 
 
-
-
-
-
+    @Query("select p from Product p where p.category.id = ?1")
+    Page<Product> findByCategoryId(Long categoryId, Pageable pageable);
 }
