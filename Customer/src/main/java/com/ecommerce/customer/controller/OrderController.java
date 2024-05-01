@@ -72,6 +72,8 @@ public class OrderController {
 
         Order newOrder = createOrderFromCart(cart, checkoutDTO);
         orderRepository.save(newOrder);
+        cart = new ShoppingCart() ;
+        shoppingCartRepository.save(cart);
         return "redirect:/";
     }
 

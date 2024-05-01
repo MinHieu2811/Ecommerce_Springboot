@@ -10,7 +10,7 @@
       </header>
       <!-- End .header -->
 
-      <main class="main">
+      <main class="main" th:if="shoppingCart != null">
         <div
           class="page-header text-center"
           style="background-image: url('assets/images/page-header-bg.jpg')"
@@ -24,8 +24,8 @@
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
           <div class="container">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Shop</a></li>
+              <li class="breadcrumb-item"><a href="/shop">Home</a></li>
+              <li class="breadcrumb-item"><a href="/shop/products">Shop</a></li>
               <li class="breadcrumb-item active" aria-current="page">
                 Shopping Cart
               </li>
@@ -36,11 +36,8 @@
         <!-- End .breadcrumb-nav -->
 
         <div class="page-content">
-          <div th:if="${check}" class="text-center alert-warning">
-            <p th:text="${check}"></p>
-          </div>
           <div class="cart">
-            <div class="container" th:if="${check == null}">
+            <div class="container">
               <div class="row">
                 <div class="col-lg-9">
                   <table class="table table-cart table-mobile">
@@ -54,8 +51,16 @@
                       </tr>
                     </thead>
 
+                    <tbody th:if="shoppingCart.cartItem == null">
+                      <tr>
+                        <td colspan="5">
+                          <p>Your cart is empty</p>
+                        </td>
+                      </tr>
+                    </tbody>
+
                     <tbody>
-                      <tr th:each="cartItem : ${shoppingCart.cartItem}">
+                      <tr th:if="shoppingCart.cartItem != null" th:each="cartItem : ${shoppingCart.cartItem}">
                         <form th:action="@{/update-cart}" method="post">
                           <td class="product-col">
                             <div class="product">
@@ -203,10 +208,10 @@
                       <tbody>
                         <tr class="summary-subtotal">
                           <td>Subtotal:</td>
-                          <td th:text="'$' + ${subTotal}"></td>
+                          <td th:text="'$' + ${subTotal == null ? 0 : subTotal}"></td>
                         </tr>
 
-                        <tr if:true="${discounted != null}">
+                        <tr th:if="${discounted != null}">
                           <td>Saved:</td>
                           <td th:text="'$' + ${discounted}"></td>
                         </tr>
@@ -237,7 +242,7 @@
                         </tr>
                         <tr class="summary-total">
                           <td>Total:</td>
-                          <td th:text="'$' + ${total}"></td>
+                          <td th:text="'$' + ${total== null ? 0 : total}"></td>
                         </tr>
                         <!-- End .summary-total -->
                       </tbody>
@@ -245,7 +250,7 @@
                     <!-- End .table table-summary -->
 
                     <a
-                      href="/shop/check-out"
+                      href="/shop/checkout"
                       class="btn btn-outline-primary-2 btn-order btn-block"
                       >PROCEED TO CHECKOUT</a
                     >
@@ -253,7 +258,7 @@
                   <!-- End .summary -->
 
                   <a
-                    href="/shop/products"
+                    href="/shop/products/0"
                     class="btn btn-outline-dark-2 btn-block mb-3"
                     ><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i
                   ></a>
@@ -423,7 +428,7 @@
     <div class="mobile-menu-overlay"></div>
     <!-- End .mobil-menu-overlay -->
 
-    <!-- <div class="mobile-menu-container">
+    <div class="mobile-menu-container">
       <div class="mobile-menu-wrapper">
         <span class="mobile-menu-close"><i class="icon-close"></i></span>
 
@@ -643,6 +648,7 @@
             </li>
           </ul>
         </nav>
+        <!-- End .mobile-nav -->
 
         <div class="social-icons">
           <a href="#" class="social-icon" target="_blank" title="Facebook"
@@ -658,8 +664,11 @@
             ><i class="icon-youtube"></i
           ></a>
         </div>
+        <!-- End .social-icons -->
       </div>
-    </div> -->
+      <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
 
     <!-- Sign in / Register Modal -->
     <div

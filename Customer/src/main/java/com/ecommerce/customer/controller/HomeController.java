@@ -1,6 +1,5 @@
 package com.ecommerce.customer.controller;
 
-import com.ecommerce.library.dto.ProductDto;
 import com.ecommerce.library.model.Category;
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.Product;
@@ -34,6 +33,7 @@ public class HomeController {
     public String home(Model model, Principal principal, HttpSession session){
         if(principal != null){
             session.setAttribute("username", principal.getName());
+
             Customer customer = customerService.findByUsername(principal.getName());
             ShoppingCart cart = customer.getShoppingCart();
             if (cart != null) {
@@ -44,6 +44,7 @@ public class HomeController {
 
         }else{
             session.removeAttribute("username");
+
         }
         return "home";
     }

@@ -58,6 +58,10 @@ public class CartController {
             model.addAttribute("total", shoppingCart.getTotalPrices());
             model.addAttribute("listVoucher", arrVouchers);
         }
+        var totalPrice = shoppingCart.getTotalPrices();
+        if (totalPrice == 0) {
+            return "empty-cart";
+        }
         return "cart";
     }
 

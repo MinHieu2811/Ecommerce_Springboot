@@ -9,12 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Library" />
         <module name="Admin" />
+        <module name="Ecommerce_Springboot" />
         <module name="Customer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Ecommerce_Springboot" target="20" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
