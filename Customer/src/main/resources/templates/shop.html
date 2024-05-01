@@ -11,8 +11,7 @@
     <div class="container">
       <div
         class="page-header text-center"
-        style="background-image: url('assets/images/page-header-bg.jpg')"
-      >
+        th:style="'background-image: url(' + @{/assets/images/page-header-bg.jpg} + ')'">
         <div class="container">
           <h1 class="page-title">Category</h1>
         </div>
@@ -24,7 +23,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/shop/">Home</a></li>
             <li class="breadcrumb-item">
-              <a href="/shop/products">Category</a>
+              <a href="/shop/products/0">Category</a>
             </li>
           </ol>
         </div>
