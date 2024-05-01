@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -71,6 +73,21 @@ public class ProductController {
         return "products-in-category";
     }
 
+    @GetMapping("/product-search/{pageNo}")
+    public String searchProducts(@PathVariable("pageNo")int pageNo,
+                                 @RequestParam("keyword") String keyword,
+                                 Model model){
+        List<CategoryDto> categoryDtoList = categoryService.getCategoryAndProduct();
+        Page<ProductDto> products = productService.searchProducts(pageNo, keyword);
+        model.addAttribute("title", "Search Result");
+        model.addAttribute("products", products);
+        model.addAttribute("categories", categoryDtoList);
+        model.addAttribute("size", products.getSize());
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", products.getTotalPages());
+        model.addAttribute("keyword", keyword);
+        return "product-search";
+    }
 
     @GetMapping("/high-price")
     public String filterHighPrice(Model model){
