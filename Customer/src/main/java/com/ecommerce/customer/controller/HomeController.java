@@ -34,6 +34,7 @@ public class HomeController {
     public String home(Model model, Principal principal, HttpSession session){
         if(principal != null){
             session.setAttribute("username", principal.getName());
+
             Customer customer = customerService.findByUsername(principal.getName());
             ShoppingCart cart = customer.getShoppingCart();
             if (cart != null) {
@@ -44,6 +45,7 @@ public class HomeController {
 
         }else{
             session.removeAttribute("username");
+
         }
         return "home";
     }

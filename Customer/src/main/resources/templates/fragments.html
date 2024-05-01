@@ -79,7 +79,20 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
-                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+<!--                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>-->
+<!--                            <li th:text="${session.username}"></li>-->
+
+                                <li th:if="${session.username == null}">
+                                    <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
+                                </li>
+                            <li th:if="${session.username != null}" th:text=" 'Hello '+ ${session.username}">
+                                <!-- This will display the username if it's not null -->
+                            </li>
+                                <li th:if="${session.username != null}">
+                                    <a th:href="@{/logout}">Logout</a>
+                                </li>
+
+
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
