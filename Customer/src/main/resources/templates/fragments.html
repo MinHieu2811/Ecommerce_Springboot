@@ -79,11 +79,12 @@
                                     </div><!-- End .header-menu -->
                                 </div>
                             </li>
+
 <!--                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>-->
 <!--                            <li th:text="${session.username}"></li>-->
 
                                 <li th:if="${session.username == null}">
-                                    <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
+                                    <a href="login.html" data-toggle="modal">Sign in / Sign up</a>
                                 </li>
                             <li th:if="${session.username != null}" th:text=" 'Hello '+ ${session.username}">
                                 <!-- This will display the username if it's not null -->
@@ -93,13 +94,15 @@
                                 </li>
 
 
+=======
+                            <li><a href="login">Sign in / Sign up</a></li>
+>>>>>>> 8560adf4b30ca107f63e0427f72894a2a79c745b
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
             </div><!-- End .header-right -->
 
         </div><!-- End .container -->
-    </div>
     </div>
     <!-- End Main Top -->
     <!-- Start Main Top -->
@@ -112,7 +115,7 @@
                 </button>
 
                 <a href="/shop" class="logo">
-                    <img src="assets/images/demos/demo-3/logo.png" alt="Molla Logo" width="105" height="25">
+                    <img th:src="@{/assets/images/demos/demo-3/logo.png}" alt="Molla Logo" width="105" height="25">
                 </a>
             </div><!-- End .header-left -->
 
@@ -164,20 +167,12 @@
                 </div><!-- End .compare-dropdown -->
 
                 <div class="dropdown cart-dropdown">
-                    <a role="button" class="dropdown-toggle cart-icon">
+                    <a href="/shop/cart" role="button" class="dropdown-toggle cart-icon">
                         <div class="icon">
                             <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">2</span>
                         </div>
                         <p>Cart</p>
                     </a>
-                    <!-- <a href="/shop/cart" role="button" class="dropdown-toggle cart-icon">
-                        <div class="icon">
-                            <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">2</span>
-                        </div>
-                        <p>Cart</p>
-                    </a> -->
                 </div><!-- End .cart-dropdown -->
             </div><!-- End .header-right -->
         </div><!-- End .container -->
@@ -217,7 +212,7 @@
                             <a href="/shop" class="sf-with-ul">Home</a>
                         </li>
                         <li>
-                            <a href="/shop/products" class="sf-with-ul">Category</a>
+                            <a href="/shop/products/0" class="sf-with-ul">Category</a>
                         </li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->
@@ -238,7 +233,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
-                            <img src="assets/images/demos/demo-3/logo-footer.png" class="footer-logo" alt="Footer Logo"
+                            <img th:src="@{/assets/images/demos/demo-3/logo-footer.png}" class="footer-logo" alt="Footer Logo"
                                 width="105" height="25">
                             <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
                                 magna eros eu erat. </p>
@@ -302,7 +297,7 @@
                 <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
                 <!-- End .footer-copyright -->
                 <figure class="footer-payments">
-                    <img src="assets/images/payments.png" alt="Payment methods" width="272" height="20">
+                    <img th:src="@{/assets/images/payments.png}" alt="Payment methods" width="272" height="20">
                 </figure><!-- End .footer-payments -->
             </div><!-- End .container -->
         </div><!-- End .footer-bottom -->
