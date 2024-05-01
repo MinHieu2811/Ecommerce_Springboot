@@ -65,7 +65,7 @@ public class OrderController {
         }
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
-        ShoppingCart cart = shoppingCartRepository.findById(customer.getId()).orElse(null);
+        ShoppingCart cart = shoppingCartRepository.findShoppingCartByCustomerId(customer.getId());
         if (cart == null) {
             return "redirect:/cart";
         }

@@ -38,7 +38,7 @@ public class VoucherController {
             ShoppingCart shoppingCart = shoppingCartRepository.findShoppingCartByCustomerId(customerId);
 
             if (shoppingCart == null) {
-                return "redirect:/check-out"; // or any other error handling mechanism
+                return "redirect:/cart"; // or any other error handling mechanism
             }
 
             // Update the discountAmount in the shopping cart
@@ -46,18 +46,17 @@ public class VoucherController {
             double total_Price = shoppingCart.getTotalPrices() - discountedPrice;
             shoppingCart.setTotalPrices(total_Price);
 
-            // Save the updated shopping cart back to the database
             shoppingCartRepository.save(shoppingCart);
 
-            // Redirect to the check-out page
-            return "redirect:/check-out";
+            return "redirect:/cart";
         } catch (VoucherServiceImpl.VoucherException e) {
             // Handle the voucher exception
+            System.out.println(e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/check-out"; // Replace "your-form-page" with the actual page where the form is located
+            return "redirect:/"; // Replace "your-form-page" with the actual page where the form is located
         } catch (IllegalArgumentException e) {
             // Handle other exceptions
-            return "redirect:/check-out";
+            return "redirect:/cart";
         }
     }
 

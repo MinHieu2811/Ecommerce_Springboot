@@ -3,9 +3,12 @@ package com.ecommerce.customer.controller;
 import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.Product;
 import com.ecommerce.library.model.ShoppingCart;
+import com.ecommerce.library.model.Voucher;
 import com.ecommerce.library.service.CustomerService;
 import com.ecommerce.library.service.ProductService;
 import com.ecommerce.library.service.ShoppingCartService;
+import com.ecommerce.library.service.VoucherService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class CartController {
@@ -26,6 +30,9 @@ public class CartController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private VoucherService voucherService;
+
     @GetMapping("/cart")
     public String cart(Model model, Principal principal, HttpSession session) {
         if (principal == null) {
@@ -35,14 +42,21 @@ public class CartController {
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
         ShoppingCart shoppingCart = customer.getShoppingCart();
+        List<Voucher> listVoucher = voucherService.findAll();
+        Voucher[] arrVouchers = new Voucher[listVoucher.size()];
+        arrVouchers = listVoucher.toArray(arrVouchers);
         if (shoppingCart == null || shoppingCart.getTotalItems() == 0) {
             model.addAttribute("check", "No item in your cart");
             session.setAttribute("totalItems", 0);
             model.addAttribute("subTotal", 0);
         } else {
             session.setAttribute("totalItems", shoppingCart.getTotalItems());
-            model.addAttribute("subTotal", shoppingCart.getTotalPrices());
+            model.addAttribute("subTotal", shoppingCart.getTotalPrices() + shoppingCart.getDiscountPrice());
             model.addAttribute("shoppingCart", shoppingCart);
+            model.addAttribute("customerId", customer.getId());
+            model.addAttribute("discounted", shoppingCart.getDiscountPrice());
+            model.addAttribute("total", shoppingCart.getTotalPrices());
+            model.addAttribute("listVoucher", arrVouchers);
         }
         return "cart";
     }
