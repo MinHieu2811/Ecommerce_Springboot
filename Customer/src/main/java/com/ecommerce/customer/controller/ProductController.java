@@ -68,7 +68,7 @@ public class ProductController {
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("productsPage", productPage);
 
-        return "products-in-category";
+        return "shop";
     }
 
 
