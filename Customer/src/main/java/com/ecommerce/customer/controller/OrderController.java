@@ -12,6 +12,7 @@ import com.ecommerce.library.repository.ShoppingCartRepository;
 import com.ecommerce.library.service.CustomerService;
 import com.ecommerce.library.service.OrderService;
 import com.ecommerce.library.service.ProductService;
+import com.ecommerce.library.service.ShoppingCartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +39,15 @@ public class OrderController {
     private ProductService productService;
 
     @Autowired
+    private ShoppingCartService shoppingCartService;
+
+    @Autowired
     private ShoppingCartRepository shoppingCartRepository;
 
     @Autowired
     private OrderRepository orderRepository;
 
-    @GetMapping("/check-out")
+    @GetMapping("/checkout")
     public String checkout(Model model, Principal principal) {
         if (principal == null) {
             return "redirect:/login";
@@ -72,8 +76,8 @@ public class OrderController {
 
         Order newOrder = createOrderFromCart(cart, checkoutDTO);
         orderRepository.save(newOrder);
-        cart = new ShoppingCart() ;
-        shoppingCartRepository.save(cart);
+        shoppingCartService.clearCart(customer);
+
         return "redirect:/";
     }
 

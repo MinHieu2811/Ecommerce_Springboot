@@ -11,4 +11,5 @@ public interface ShoppingCartService {
 
     ShoppingCart deleteItemFromCart(Product product, Customer customer);
 
+    ShoppingCart clearCart(Customer customer);
 }

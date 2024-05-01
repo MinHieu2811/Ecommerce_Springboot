@@ -112,6 +112,25 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cartRepository.save(cart);
     }
 
+    @Override
+    public ShoppingCart clearCart(Customer customer) {
+        ShoppingCart cart = customer.getShoppingCart();
+
+        Set<CartItem> cartItems = cart.getCartItem();
+
+        for (CartItem item : cartItems) {
+            itemRepository.delete(item);
+        }
+
+        cart.setCartItem(null);
+        cart.setTotalItems(0);
+        cart.setTotalPrices(0.0);
+        cart.setDiscountPrice(0);
+
+        return cartRepository.save(cart);
+
+    }
+
     private CartItem findCartItem(Set<CartItem> cartItems, Long productId) {
         if (cartItems == null) {
             return null;
