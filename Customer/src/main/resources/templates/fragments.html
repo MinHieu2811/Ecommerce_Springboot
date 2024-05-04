@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Molla - Bootstrap eCommerce Template</title>
+    <title>Molla</title>
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
@@ -84,7 +84,7 @@
 <!--                            <li th:text="${session.username}"></li>-->
 
                                 <li th:if="${session.username == null}">
-                                    <a href="login.html" data-toggle="modal">Sign in / Sign up</a>
+                                    <a href="/shop/login">Sign in / Sign up</a>
                                 </li>
                             <li th:if="${session.username != null}" th:text=" 'Hello '+ ${session.username}">
                                 <!-- This will display the username if it's not null -->
@@ -177,30 +177,6 @@
     <!--Navigation Product page-->
     <div class="header-bottom sticky-header" th:fragment="header-bottom">
         <div class="container">
-            <div class="header-left">
-                <div class="dropdown category-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" data-display="static" title="Browse Categories">
-                        Browse Categories <i class="icon-angle-down"></i>
-                    </a>
-
-                    <div class="dropdown-menu">
-                        <nav class="side-nav">
-                            <ul class="menu-vertical sf-arrows">
-                                <li class="item-lead"><a href="#">Daily offers</a></li>
-                                <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                <li><a href="#">Earphones</a></li>
-                                <li><a href="#">Laptop</a></li>
-                                <li><a href="#">Camera</a></li>
-                                <li><a href="#">Smart watch</a></li>
-                                <li><a href="#">Speaker</a></li>
-                                <li><a href="#">Ipad </a></li>
-                            </ul><!-- End .menu-vertical -->
-                        </nav><!-- End .side-nav -->
-                    </div><!-- End .dropdown-menu -->
-                </div><!-- End .category-dropdown -->
-            </div><!-- End .header-left -->
-
             <div class="header-center">
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">

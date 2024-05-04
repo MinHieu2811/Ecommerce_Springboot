@@ -135,7 +135,7 @@
                   <div
                     class="d-flex justify-content-between align-items-start"
                   >
-                    <div class="cart-bottom" style="display: block" th:if="discounted == 0">
+                    <div class="cart-bottom" th:if="discounted != 0" style="display: block;">
                       <div class="cart-discount">
                         <form th:action="@{/apply-voucher}" method="post">
                           <div class="input-group">

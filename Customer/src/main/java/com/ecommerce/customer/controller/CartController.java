@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -45,6 +46,15 @@ public class CartController {
         List<Voucher> listVoucher = voucherService.findAll();
         Voucher[] arrVouchers = new Voucher[listVoucher.size()];
         arrVouchers = listVoucher.toArray(arrVouchers);
+        List<Voucher> filteredVouchersList = new ArrayList<>();
+
+        for (int i = 0; i < arrVouchers.length; i++) {
+            if (arrVouchers[i].getMinPurchaseAmount() <= shoppingCart.getTotalPrices()) {
+                filteredVouchersList.add(arrVouchers[i]);
+            }
+        }
+
+        Voucher[] filteredVouchersArray = filteredVouchersList.toArray(new Voucher[0]);
         if (shoppingCart == null || shoppingCart.getTotalItems() == 0) {
             model.addAttribute("check", "No item in your cart");
             session.setAttribute("totalItems", 0);
@@ -56,7 +66,7 @@ public class CartController {
             model.addAttribute("customerId", customer.getId());
             model.addAttribute("discounted", shoppingCart.getDiscountPrice());
             model.addAttribute("total", shoppingCart.getTotalPrices());
-            model.addAttribute("listVoucher", arrVouchers);
+            model.addAttribute("listVoucher", filteredVouchersArray);
         }
         var totalPrice = shoppingCart.getTotalPrices();
         if (totalPrice == 0) {
