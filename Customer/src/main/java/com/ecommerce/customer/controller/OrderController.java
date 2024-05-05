@@ -130,6 +130,19 @@ public class OrderController {
         return "order";
     }
 
+    @GetMapping("/orders")
+    public String orders(Model model) {
+        String username = principal.getName();
+        Customer customer = customerService.findByUsername(username);
+        List<Order> orderList = customer.getOrders();
+        if (orderList.isEmpty()) {
+            model.addAttribute("check", "No orders found.");
+        } else {
+            model.addAttribute("orders", orderList);
+        }
+        return "order";
+    }
+
     @GetMapping("/save-order")
     public String saveOrder(Principal principal, Model model) {
         if (principal == null) {
