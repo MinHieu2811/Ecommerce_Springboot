@@ -1,11 +1,16 @@
 package com.ecommerce.customer.controller;
 
+import com.ecommerce.library.model.Customer;
 import com.ecommerce.library.model.ShoppingCart;
 import com.ecommerce.library.model.Voucher;
 import com.ecommerce.library.repository.ShoppingCartRepository;
 import com.ecommerce.library.repository.VoucherRepository;
+import com.ecommerce.library.service.CustomerService;
 import com.ecommerce.library.service.VoucherService;
 import com.ecommerce.library.service.impl.VoucherServiceImpl;
+
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,15 +24,22 @@ public class VoucherController {
     private VoucherRepository voucherRepository;
     @Autowired
     private ShoppingCartRepository shoppingCartRepository;
+    @Autowired
+    private CustomerService customerService;
+
 
     @PostMapping("/apply-voucher")
     public String applyVoucher(
             @RequestParam String voucherCode,
             @RequestParam double totalPrice,
             @RequestParam Long customerId,
-            RedirectAttributes redirectAttributes
+            RedirectAttributes redirectAttributes,
+            Principal principal
     ) {
         try {
+            String customerName = principal.getName();
+            Customer customer = customerService.findByUsername(customerName);
+
             // Retrieve the voucher from the database based on the voucher code
             Voucher voucher = voucherRepository.findByCode(voucherCode);
 
@@ -35,7 +47,7 @@ public class VoucherController {
             double discountedPrice = voucherService.applyVoucher(voucher, totalPrice);
 
             // Retrieve the shopping cart from the database
-            ShoppingCart shoppingCart = shoppingCartRepository.findShoppingCartByCustomerId(customerId);
+            ShoppingCart shoppingCart = shoppingCartRepository.findShoppingCartByCustomerId(customer.getId());
 
             if (shoppingCart == null) {
                 return "redirect:/cart"; // or any other error handling mechanism
