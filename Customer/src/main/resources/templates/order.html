@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<!-- Basic -->
-
-<head th:replace="fragments::head">
-
-
-</head>
-
+<head th:replace="fragments::head"> </head>
 <body>
-<!-- Start Main Top -->
-<div th:replace="fragments::main-top">
-</div>
-<!-- End Main Top -->
-
-<!-- Start Main Top -->
-<header th:replace="fragments::main-header">
-</header>
-<!-- End Main Top -->
-
-<!-- Start Top Search -->
-<div th:replace="fragments::top-search">
-</div>
-<!-- End Top Search -->
-
-<!-- Start All Title Box -->
-<div th:replace="fragments::slider">
-</div>
-<!-- End All Title Box -->
+<div class="page-wrapper">
+    <header class="header header-intro-clearance header-3">
+        <div th:replace="fragments::header-top"></div>
+        <div th:replace="fragments::header-middle"></div>
+        <div th:replace="fragments::header-bottom"></div>
+    </header>
 
 <!-- Update Personal Information -->
 <section>
@@ -97,6 +78,7 @@
 
 <!-- ALL JS FILES -->
 <div th:replace="fragments::script"></div>
+
 </body>
 
 </html>

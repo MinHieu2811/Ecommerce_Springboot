@@ -131,7 +131,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public String orders(Model model) {
+    public String orders(Model model, Principal principal) {
         String username = principal.getName();
         Customer customer = customerService.findByUsername(username);
         List<Order> orderList = customer.getOrders();
